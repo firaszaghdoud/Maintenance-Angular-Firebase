@@ -1,0 +1,28 @@
+<div class="content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ref</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Date Dernier D'entretien</th>
+        <th scope="col"></th>
+
+
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of exercises">
+      <tr>
+
+        <td>{{item.ref}}</td>
+        <td>{{item.libelle}}</td>
+        <td>{{item.sdateAlert}}</td>
+        <td>
+    </td>
+    <td>
+      <button class="btn btn-danger" (click)="Terminer(item.id)">Terminer</button>
+    </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

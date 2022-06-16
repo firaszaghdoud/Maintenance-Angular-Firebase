@@ -1,0 +1,27 @@
+<div class="background-wrap">
+  <div class="background"></div>
+</div>
+
+<form #f="ngForm" (ngSubmit)="login(f)" id="accesspanel" action="" >
+  <h1 id="litheader">Connexion</h1>
+  <div class="inset">
+
+    <!--username champ-->
+    <p>
+      <input type="text" name="username" #username="ngModel" ngModel  id="username" placeholder="Nom d'utilisateur" required>
+    </p>
+    <p class="alert alert-danger" *ngIf="username.errors?.required &&username.touched">Ce champ est obligatoire </p>
+
+        <!-- Password champ-->
+
+    <p>
+      <input type="password" name="password" #password="ngModel" ngModel id="password" placeholder="Mot de passe" required>
+    </p>
+    <p class="alert alert-danger" *ngIf="password.errors?.required && password.touched">Ce champ est obligatoire </p>
+
+  </div>
+  <p class="p-container">
+    <input type="submit" name="Login" id="go" value="Connexion" [disabled]="f.invalid"  >
+  </p>
+  <div class="alert alert-danger" *ngIf="messageError"> {{messageError}}</div>
+</form>

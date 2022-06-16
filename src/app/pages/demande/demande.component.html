@@ -1,0 +1,37 @@
+<div class="content">
+
+  <div class="col-md-8">
+    <div class="card card-container">
+      <h1 style="text-align: center">Demande Du Travail</h1>
+    </div>
+  </div>
+  <form >
+     <div class="input-group mb-3">
+        <span class="input-group-text">N° Dossier</span>
+        <span class="input-group-text">{{ dataArray.NumDossier }}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Ref Appareil</span>
+        <span class="input-group-text">{{ dataArray.ref }}</span>
+      </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Libellé</span>
+      <span class="input-group-text">{{ dataArray.libelle }}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date d'Arrêt</span>
+      <span class="input-group-text">{{ dataArray.dateArret }}</span>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Description</span>
+      <span class="input-group-text">{{ dataArray.description }}</span>
+    </div>
+  </form>
+<button class="btn btn-danger" (click)="fermer()">Fermer</button>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID Bon de Travail</th>
+        <th scope="col">Libellé</th>
+        <th scope="col">Réf Appareil</th>
+        <th scope="col">Id Demande de Travail</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of dataArray">
+      <tr>
+        <th scope="row">{{ item.id }}</th>
+        <td>{{ item.libelle }}</td>
+        <td style="text-align: center">{{ item.ref }}</td>
+        <td><a  (click)="demande(item.demandeID)">{{ item.demandeID }}</a></td>
+        <td>
+          <button type="button" (click)="consult(item.id)" class="btn btn-success">
+            Consult
+          </button>
+
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+.btn-link{
+margin-left: 300px;
+margin-bottom: 50px;
+}
+nav{
+  margin-bottom: 20px;
+  width: 600px;
+}
+
+.btn-success{
+line-height: 6px;
+  padding-left: 0px;
+  width: 60px;
+
+
+}
+.btn-danger{
+  line-height: 6px;
+  padding-left: 0px;
+  width: 80px;
+}

@@ -1,0 +1,58 @@
+<div class="content">
+
+  <div class="col-md-12">
+    <div class="card card-container">
+      <h1 style="text-align: center">Bon de Travail</h1>
+    </div>
+  </div>
+  <form >
+     <div class="input-group mb-3">
+        <span class="input-group-text">N° Bon</span>
+        <span class="input-group-text">{{ dataBon.bonID }}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">N° Demande Service</span>
+        <span class="input-group-text"><a (click)="demande(dataBon.demandeID)">{{ dataBon.demandeID }}</a></span>
+      </div>
+
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Ref Appareil</span>
+        <span class="input-group-text">{{ dataBon.ref }}</span>
+      </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Libellé</span>
+      <span class="input-group-text">{{ dataBon.libelle }}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date d'Arrêt</span>
+      <span class="input-group-text">{{ dataBon.dateArret }}</span>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date De Mise En Service</span>
+      <span class="input-group-text">{{ dataBon.date_mise_service }}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Cout Détaillé</span>
+      <span class="input-group-text">{{ dataBon.coutDetaille }}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Cout Totale</span>
+      <span class="input-group-text">{{ dataBon.coutTotale }}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Observation</span>
+      <span class="input-group-text">{{ dataBon.observation }}</span>
+    </div>
+  </form>
+<button class="btn btn-danger" (click)="fermer()">Fermer</button>
+
+</div>

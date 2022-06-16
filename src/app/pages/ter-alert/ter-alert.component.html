@@ -1,0 +1,56 @@
+<div class="content">
+
+  <div class="col-md-4">
+    <div class="card card-container" style="width: 1000px;">
+      <h1 style="text-align: center">Fiche Entretien</h1>
+    </div>
+  </div>
+  <form #f="ngForm" >
+     <div class="input-group mb-3">
+        <span class="input-group-text">Ref appareil </span>
+        <span class="input-group-text">{{dataAlert.ref}}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">libelle </span>
+        <span class="input-group-text">{{dataAlert.libelle}}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Date Dernier D'entretien</span>
+        <span class="input-group-text">{{dataAlert.sdateAlert}}</span>
+      </div>
+
+<form [formGroup] = "form">
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date D'entretien</span>
+      <input type="datetime-local" id="mise-service" name="mise-service" formControlName="presentDate" required >
+    </div>
+</form>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" >Coût détaillé</span>
+      <textarea class="form-control" type="text" name="coutDetaille" #coutDetaille="ngModel"  ngModel required></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Coût totale</span>
+      <input class="form-control" type="text" name="coutTotale" #coutTotale="ngModel"  ngModel required >
+      <span class="input-group-text">DT</span>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Description</span>
+      <textarea class="form-control" type="text" name="description" #description="ngModel"  ngModel required></textarea>
+    </div>
+
+
+
+    <button class="btn btn-success" (click)="Terminer(f)" [disabled]="f.invalid" >Terminer</button>
+    <button class="btn btn-danger" (click)="retour()"  >Retour</button>
+
+  </form>
+
+
+</div>

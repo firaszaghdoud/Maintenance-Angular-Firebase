@@ -1,0 +1,187 @@
+<div class="content">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" mdbCollapse>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/dashboard']">Accueil</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+
+        <!-- Search form -->
+        <form class="d-flex input-group w-auto">
+          <button class="btn btn-outline-primary" *ngIf="type_user=='Administrateur'" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ajouter Appareil
+          </button>
+        </form>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <div class="alert alert-success" *ngIf="updatemessage">
+    {{ updatemessage }}
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Réf</th>
+        <th scope="col">Libellé</th>
+        <th scope="col">Heures du travail</th>
+        <th scope="col">Etat</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of dataArray">
+      <tr>
+        <th scope="row">{{ item.ref }}</th>
+        <td>{{ item.libelle }}</td>
+        <td style="text-align: center">{{ item.heuretrav }}</td>
+        <td>{{ item.etat }}</td>
+        <td>
+          <button type="button"  (click)="consult(item.id)" class="btn btn-success">
+            Consult
+          </button>
+          <button type="button" *ngIf="type_user=='Administrateur' || type_user=='BM'" (click)="delete(item.id)" class="btn btn-danger">
+            Supprimer
+          </button>
+          <button type="button" *ngIf="type_user=='Administrateur' || type_user=='BM'" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+            (click)="getID(item.id)">
+            Modifier
+          </button>
+          <button type="button" class="btn btn-danger" style="width: 50px;" (click)="getPanneID(item.id)">
+            Panne
+          </button>
+
+
+          <!--Modifier appareil model-->
+
+          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">
+                    Modifier un appareil
+                  </h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form #f2="ngForm" (ngSubmit)="appareilUpdate(f2)">
+                    <p>REF:</p>
+                    <input type="text" class="form-control" name="ref" placeholder="ref" value="{{ dataAppareilUP.ref }}"
+                      [(ngModel)]="dataAppareilUP.ref"  />
+
+                    <p>Libellé:</p>
+                    <input type="text" class="form-control" name="libelle" placeholder="Libellé"
+                      value="{{ dataAppareilUP.libelle }}" [(ngModel)]="dataAppareilUP.libelle" />
+
+                    <p>Heure de travail:</p>
+                    <input type="text" class="form-control" name="heuretrav" placeholder="Heure de travail"
+                      value="{{ dataAppareilUP.heuretrav }}" [(ngModel)]="dataAppareilUP.heuretrav"  />
+
+                    <p>Etat:</p>
+                    <input type="text" class="form-control" name="etat" placeholder="Etat"
+                      value="{{ dataAppareilUP.etat }}" [(ngModel)]="dataAppareilUP.etat"  /><br />
+
+                    <button type="submit" class="btn btn-primary" >
+                      modifier
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--ajout appareil model-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Ajouter un appareil</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="addappreil(f)">
+          <p>REF:</p>
+          <input type="text" class="form-control" name="ref" placeholder="Ref" #ref="ngModel" ngModel required />
+
+          <p>Libellé:</p>
+          <input type="text" class="form-control" name="libelle" placeholder="Libellé" #libelle="ngModel" ngModel
+            required />
+
+
+            <p>Fournisseur:</p>
+            <input type="text" class="form-control" name="fournisseur" placeholder="fournisseur" #fournisseur="ngModel" ngModel
+              required />
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Date de mise en service</span>
+                <input type="datetime-local" id="date" name="date" #date="ngModel" ngModel   required >
+              </div>
+
+
+          <p>Heure de travail:</p>
+          <input type="number" class="form-control" name="heuretrav" placeholder="Heure de travail" #heuretrav="ngModel"
+            ngModel required />
+
+
+          <p>Etat:</p>
+          <select name="etat" id="etat" #etat="ngModel"ngModel>
+            <option value="encours">En cours</option>
+            <option value="arret">Arret</option>
+         </select>
+
+         <!--file Upload-->
+          <label>
+            <input
+              type="file"
+              accept=".pdf"
+              name="file"
+              #file="ngModel" ngModel
+              (change)="uploadfile($event)"
+            />
+          </label>
+
+          <div *ngIf="persentage |async as pct">
+            <div *ngIf="pct==100" class="alert alert-success">Upload Successfully</div>
+            <progress
+            id="js-progressbar"
+            class="uk-progress"
+            [value]="pct"
+            max="100"
+            >
+            </progress>
+          </div>
+
+
+          <br>
+         <br>
+
+          <div class="alert alert-success" *ngIf="successmessage">
+            {{ successmessage }}
+          </div>
+
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

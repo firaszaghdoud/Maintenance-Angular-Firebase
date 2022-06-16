@@ -1,0 +1,83 @@
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+        mdbCollapse
+      >
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              [routerLink]="['/profile']"
+              >Profile</a
+            >
+          </li>
+        </ul>
+        <!-- Left links -->
+
+        <form class="d-flex input-group w-auto">
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            [routerLink]="['/register']"
+          >
+            Ajouter compte
+          </button>
+        </form>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+<h1>Liste De Comptes</h1>
+
+<div class="content">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" style="text-align: center;">Utilisateur ID</th>
+      <th scope="col" style="text-align: center;">Email</th>
+      <th scope="col" style="text-align: center;">Nom & Prenom</th>
+      <th scope="col" style="text-align: center;">Nom d'utilisateur</th>
+      <th scope="col" style="text-align: center;">Type Agent</th>
+
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of dataProfile">
+    <tr>
+      <th  style="font-size: 10px; text-align: center;">{{ item.id }}</th>
+      <td style="text-align: center;">{{ item.email }}</td>
+      <td style="text-align: center">{{ item.nom }} {{ item.prenom }}</td>
+      <td style="text-align: center;">{{ item.username }}</td>
+      <td style="text-align: center;">{{ item.agent }}</td>
+
+      <td>
+
+        <button type="button" (click)="delete(item.id)" class="btn btn-danger">
+          Supprimer
+        </button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

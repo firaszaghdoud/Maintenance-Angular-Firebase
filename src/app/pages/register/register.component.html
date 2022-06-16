@@ -1,0 +1,175 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <form #f="ngForm" (ngSubmit)="register(f)">
+      <h1>Inscription</h1>
+
+      <!-- Nom input-->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="nom"
+          placeholder="Nom"
+          #nom="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <p class="alert alert-danger" *ngIf="nom.errors?.required && nom.touched">
+        ce champ est obligatoire
+      </p>
+
+      <!-- Prenom input-->
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="prenom"
+          placeholder="Prenom"
+          #prenom="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <p
+        class="alert alert-danger"
+        *ngIf="prenom.errors?.required && prenom.touched"
+      >
+        ce champ est obligatoire
+      </p>
+
+      <!-- username input-->
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          placeholder="Nom d'utilisateur"
+          #username="ngModel"
+          ngModel
+          required
+        />
+      </div>
+      <p
+        class="alert alert-danger"
+        *ngIf="username.errors?.required && username.touched"
+      >
+        ce champ est obligatoire
+      </p>
+
+      <!-- Email input-->
+
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          placeholder="Email"
+          #email="ngModel"
+          ngModel
+          email
+          required
+        />
+      </div>
+      <p
+        class="alert alert-danger"
+        *ngIf="email.errors?.required && email.touched"
+      >
+        ce champ est obligatoire
+      </p>
+      <p
+        class="alert alert-danger"
+        *ngIf="email.errors?.email && email.touched"
+      >
+        ce champ est sous forme email
+      </p>
+
+      <!-- Type d'Agent-->
+
+
+      <p>Type d'agent:</p>
+        <select name="agent" id="agent" #agent="ngModel"ngModel>
+            <option value="Service_demandeur">Service Demandeur</option>
+            <option value="BM">BM</option>
+            <option value="Administrateur">Administrateur</option>
+
+         </select>
+
+      <!-- Password input-->
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="Mot de passe "
+          #password="ngModel"
+          ngModel
+          minlength="8"
+          required
+        />
+      </div>
+      <p
+        class="alert alert-danger"
+        *ngIf="password.errors?.required && password.touched"
+      >
+        ce champ est obligatoire
+      </p>
+      <p
+        class="alert alert-danger"
+        *ngIf="password.errors?.minlength && password.touched"
+      >
+        ce champ est obligatoire d'avoir 8 caractères ou plus
+      </p>
+
+      <!-- Confirmer Password input-->
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          name="confirme_password"
+          placeholder="Confirmer mot de passe"
+          #confirme_password="ngModel"
+          ngModel
+          minlength="8"
+          required
+        />
+      </div>
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          confirme_password.errors?.required &&
+          confirme_password.errors?.minlength &&
+          confirme_password.touched
+        "
+      >
+        ce champ est obligatoire
+      </p>
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          password.value !== confirme_password.value &&
+          confirme_password.touched
+        "
+      >
+        le mot de passe n'est pas correcte
+      </p>
+            <!-- Role Utilisateur -->
+
+
+      <!-- Register Boutton -->
+
+      <div class="form-group">
+        <button
+          class="btn btn-primary btn-block"
+          type="submit"
+          [disabled]="f.invalid"
+        >
+        S'inscrire
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

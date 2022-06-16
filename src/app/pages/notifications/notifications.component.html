@@ -1,0 +1,28 @@
+<div class="content">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id Demande</th>
+      <th scope="col">Ref Appareil</th>
+      <th scope="col">Libellé</th>
+      <th scope="col">Date D'arret</th>
+      <th scope="col"></th>
+
+
+
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of dataArray">
+    <tr>
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.ref }}</td>
+      <td>{{ item.libelle}}</td>
+      <td>{{item.dateArret}}</td>
+  <td>
+    <button class="btn btn-success" style="line-height: 6px; padding-left: 0px; width: 60px;" (click)="consPanne(item.id)" >consult</button>
+    <button class="btn btn-danger" style="line-height: 6px; padding-left: 0px; width: 80px;" (click)="bonTrav(item.id,item.appareilID)" >Terminer</button>
+  </td>
+    </tr>
+  </tbody>
+</table>
+</div>

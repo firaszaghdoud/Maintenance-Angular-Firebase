@@ -1,0 +1,153 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      mdbCollapse
+    >
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            [routerLink]="['/dashboard']"
+            >Accueil</a
+          >
+        </li>
+      </ul>
+      <!-- Left links -->
+
+      <form class="d-flex input-group w-auto">
+
+        <button class="btn btn-danger" type="button" [routerLink]="['/suppCompte']" *ngIf="type_agent=='Administrateur'">Gérer comptes</button>
+      </form>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Profile</h5></div>
+        <div class="card-body">
+
+          <form #f="ngForm" (ngSubmit)="update(f)">
+
+            <div class="col-md-6 pl-md-1">
+              <div class="form-group">
+                <label>Nom </label>
+                <input
+                  class="form-control"
+                  placeholder="Nom"
+                  type="text"
+                  value="{{dataProfile.Nom}}"
+                  name="nom"
+                  [(ngModel)]="dataProfile.Nom"
+                />
+              </div>
+            </div>
+            <div class="col-md-6 pl-md-1">
+              <div class="form-group">
+                <label> Prenom </label>
+                <input
+                  class="form-control"
+                  placeholder="Prenom"
+                  type="text"
+                  value="{{dataProfile.Prenom}}"
+                  name="prenom"
+                  [(ngModel)]="dataProfile.Prenom"
+                />
+              </div>
+            </div>
+
+            <div class="row"></div>
+            <div class="col-md-6 pl-md-1">
+              <div class="form-group">
+                <label> Username </label>
+                <input
+                  class="form-control"
+                  placeholder="Username"
+                  type="text"
+                  value="{{dataProfile.Username}}"
+                  name="username"
+                  [(ngModel)]="dataProfile.Username"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1"> Email address </label>
+              <input
+                class="form-control"
+                placeholder="mike@gmail.com"
+                type="email"
+                value="{{dataProfile.Email}}"
+                name="email"
+                [(ngModel)]="dataProfile.Email"
+              />
+            </div>
+            <fieldset>
+
+            <div class="form-group">
+              <label for="password"> Password </label>
+              <input
+              #password="ngModel" ngModel minlength="8" required
+              id="password"
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="Password"
+                value="{{dataProfile.Password}}"
+                name="password"
+                [(ngModel)]="dataProfile.Password"
+              />
+              <p class="alert alert-danger" *ngIf="password.errors?.required && password.touched">ce champ est obligatoire d'avoir 8 caractères ou plus</p>
+              <p class="alert alert-danger" *ngIf="password.errors?.minlength ">Le mot de passe doit être 8 caractères ou plus</p>
+
+            </div>
+
+            <div class="form-group">
+              <label for="Confirmer password"> Confirmer Password </label>
+              <input
+              #confirme_password="ngModel" ngModel minlength="8" required
+              id="confirm_password"
+                type="password"
+                class="form-control"
+                name="confirmer_password"
+                placeholder="Confirmer Password"
+              />
+
+              <p class="alert alert-danger" *ngIf="confirme_password.errors?.required && password.value!==confirme_password.value && confirme_password.touched">le mot de passe n'est pas confirmer</p>
+
+            </div>
+            <div class="alert alert-success" *ngIf="successupdate">{{successupdate}}</div>
+
+            <div class="card-footer">
+              <button class="btn btn-fill btn-danger" type="submit" [disabled]="f.invalid">
+                Sauvegarder
+              </button>
+            </div>
+          </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

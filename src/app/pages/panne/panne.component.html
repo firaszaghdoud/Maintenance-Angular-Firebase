@@ -1,0 +1,44 @@
+<div class="col-md-8">
+
+  <div class="card card-container">
+    <form action="" #f="ngForm" (ngSubmit)="addpanne(f)" >
+
+    <h1 style="text-align: center;">Demande de travail</h1>
+    <div class="input-group mb-3">
+      <span class="input-group-text">N° Dossier</span>
+      <span class="input-group-text">{{NDossier}}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Ref</span>
+      <span class="input-group-text">{{dataPanne.ref}}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="baxsic-addon2">Libellé</span>
+
+      <span class="input-group-text">{{dataPanne.libelle}}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <form [formGroup] = "form">
+        <div class="input-group mb-3">
+          <span class="input-group-text">Date d'arret</span>
+          <input type="datetime-local" id="mise-service" name="mise-service" formControlName="presentDate" required >
+        </div>
+    </form>
+
+    </div>
+
+
+    <div class="input-group">
+      <span class="input-group-text">Description du panne</span>
+      <textarea class="form-control" name="description" #description="ngModel"  ngModel required style="height: 100px"></textarea>
+    </div>
+    <div class="alert alert-success" *ngIf="successmessage">
+      {{ successmessage }}
+    </div>
+    <button class="btn btn-success" type="submit" [disabled]="f.invalid">Terminer</button>
+  </form>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="content">
+
+  <div class="col-md-8">
+    <div class="card card-container">
+      <h1 style="text-align: center">Bon Du Travail</h1>
+    </div>
+  </div>
+  <form #f="ngForm" (ngSubmit)="Terminer(f)">
+     <div class="input-group mb-3">
+        <span class="input-group-text">N° Bon </span>
+        <span class="input-group-text">{{NumBon}}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">N° Demande du travail </span>
+        <span class="input-group-text">{{dataPanne.NumDossier}}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Ref Appareil</span>
+        <span class="input-group-text">{{dataPanne.ref}}</span>
+      </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Libellé</span>
+      <span class="input-group-text">{{dataPanne.libelle}}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date d'Arrêt</span>
+      <span class="input-group-text">{{dataPanne.sdateArret}}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Description</span>
+      <span class="input-group-text">{{dataPanne.description}}</span>
+    </div>
+<form [formGroup] = "form">
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date de mise en service</span>
+      <input type="datetime-local" id="mise-service" name="mise-service" formControlName="presentDate" required >
+    </div>
+</form>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" >Coût détaillé</span>
+      <textarea class="form-control" type="text" name="coutDetaille" #coutDetaille="ngModel"  ngModel required></textarea>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Coût totale</span>
+      <input class="form-control" type="text" name="coutTotale" #coutTotale="ngModel"  ngModel required >
+      <span class="input-group-text">DT</span>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Observation</span>
+      <textarea class="form-control" type="text" name="observation" #observation="ngModel"  ngModel required></textarea>
+    </div>
+
+
+
+    <button class="btn btn-succes" [disabled]="f.invalid" >Terminer</button>
+  </form>
+
+
+</div>

@@ -1,0 +1,48 @@
+<div class="content">
+
+  <div class="col-md-8">
+    <div class="card card-container">
+      <h1 style="text-align: center">Appareil Détails</h1>
+
+  <form >
+     <div class="input-group mb-3">
+        <span class="input-group-text">ref Appareil</span>
+        <span class="input-group-text">{{ dataAppareil.ref }}</span>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">libellé</span>
+        <span class="input-group-text">{{ dataAppareil.libelle }}</span>
+      </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Heures Du Travail</span>
+      <span class="input-group-text">{{ dataAppareil.heuretrav }}H</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Temps d'Arrêt</span>
+      <span class="input-group-text">{{ dataAppareil.tempArret }}</span>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Date Mise En Service</span>
+      <span class="input-group-text">{{ dataAppareil.date_mise_premier_service }}</span>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Etat</span>
+      <span class="input-group-text">{{ dataAppareil.etat }}</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Fiche technique</span>
+      <span class="input-group-text"><a href="{{ dataAppareil.file }}">Fichier</a></span>
+    </div>
+  </form>
+<button class="btn btn-danger" (click)="fermer()">Fermer</button>
+</div>
+</div>
+</div>
